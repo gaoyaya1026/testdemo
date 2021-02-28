@@ -18,6 +18,7 @@ public class test {
             }
             System.out.println(num);
            System.out.println("flag="+flag);
+           System.out.println("hello world");
        }
 
     }
