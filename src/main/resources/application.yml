@@ -1,140 +1,17 @@
 #tomcat 配置
 server:
-  servlet.context-path: /pharmacy-cloud
-  port: 8899
-  tomcat:
-      uri-encoding: UTF-8
-      max-threads: 1000
-      max-connections: 20000
+#  servlet.context-path: /pharmacy-cloud
+  port: 8080
 
-logback:
-    level: INFO
 
 spring:
 #应用名称
   application:
-    name: pharmacy-cloud
+    name: test-demo
   #日志配置
-  logstash:
-      server: 10.8.76.170
-      port: 5506
-      serviceId: service-yyf-dev
+#  logstash:
+#      server: 10.8.76.170
+#      port: 5506
+#      serviceId: service-yyf-dev
   ##数据库配置数据源
-  datasource:
-    druid:
-      primary:
-        jdbc-url: jdbc:postgresql://10.8.76.215:5432/yyf_cloud_test?stringtype=unspecified&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false&useAffectedRows=true
-        username: postgres
-        password: postgres
-        driver-class-name: org.postgresql.Driver
-      secondary:
-        jdbc-url: jdbc:postgresql://10.8.76.215:5432/yyf_cloud_test?stringtype=unspecified&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8&allowMultiQueries=true&useSSL=false&useAffectedRows=true
-        username: postgres
-        password: postgres
-        driver-class-name: org.postgresql.Driver
-      # 配置初始化大小（默认0）、最小、最大（默认8）
-      initial-size: 10
-      min-idle: 10
-      max-active: 100
-      # 配置获取连接等待超时的时间
-      max-wait: 5000
-  jpa:
-    show-sql: true
-    hibernate:
-      naming:
-#        physical-strategy: org.hibernate.boot.param.naming.PhysicalNamingStrategyStandardImpl
-        physical-strategy: com.herenit.pharmacycloud.config.UpperTableStrategy
-    properties:
-      hibernate:
-        temp:
-          use_jdbc_metadata_defaults: false
-        format_sql: true
-    open-in-view: false
-  data:
-    redis:
-      repositories:
-        enabled: false
-# Redis配置（测试）
-  redis:
-    host: 10.8.76.217
-    password: herenit123456
-    database: 3
-    port: 6379
-    timeout: 5000ms
-    jedis:
-      pool:
-        # 最大空闲连接数
-        max-idle: 100
-        # 最小空闲连接数
-        min-idle: 10
-        # 等待可用连接的最大时间，负数为不限制
-        max-wait:  -1s
-        # 最大活跃连接数，负数为不限制
-        max-active: -1
-    #是否缓存空值
-    cache-mull-values: false
-    #缓存过期时间
-#    time-to-live: 100s
-ysf:
-  #云审方地址
-  host: http://10.8.76.99:20001/pharmacy-review
-  sendToMq: /certificateAuth/testQuene
-  userInfoUrl: /certificateAuth/getUserInfo
 
-#不需要走审方平台的机构号
-notcheck:
-  hoscodelist:
-    - 47117170333050211A1001
-
-#swagger文档配置
-swagger:
-  enabled: true
-  title: 处方流转中心
-  version: 1.0
-  base-package: com.herenit.pharmacycloud
-
-#token 环境配置 0-本地，1-测试，2-生产
-tokenEnvironment:
-  value: 0
-
-token:
-  #token过期时间 单位/秒  7天-604800秒
-  tokenExpiredTime: 604800
-
-yxToken:
-  hosCode: yxhzyyf
-  grantCode: yxhzyyf2020
-  grantKey: yxhzyyf_@2020
-  #token过期时间 单位/小时
-  expiredTime: 11
-yxInterfacePath:
-  #获取yx接口凭证
-#  authentication: https://yyldevwwz.eheren.com/pbminterface/hos/authentication.json
-#  getPresInfoByYx: https://yyldevwwz.eheren.com/pbminterface/hos/getRecipeInfo.json
-#  uploadPrescToYx: https://yyldevwwz.eheren.com/pbminterface/hos/uploadRecipe.json
-#  getExpressInfoToYx: https://yyldevwwz.eheren.com/pbminterface/order/queryRouters.json
-#  addLogisticsListToYx: https://yyldevwwz.eheren.com/pbminterface/order/createExpressOrder.json
-#  updateDrugInfoToYx: https://yyldevwwz.eheren.com/pbminterface/store/updateDrugInfo.json
-  authentication: http://10.8.76.99:20001/pbminterface/hos/authentication.json
-  getPresInfoByYx: http://10.8.76.99:20001/pbminterface/hos/getRecipeInfo.json
-  uploadPrescToYx: http://10.8.76.99:20001/pbminterface/hos/uploadRecipe.json
-  getExpressInfoToYx: http://10.8.76.99:20001/pbminterface/payOrder/queryRouters.json
-  addLogisticsListToYx: http://10.8.76.99:20001/pbminterface/payOrder/createExpressOrder.json
-  updateDrugInfoToYx: https://10.8.76.99:20001/pbminterface/store/updateDrugInfo.json
-  getExpressFeeToYx: https://yyldevwwz.eheren.com/pbminterface/payOrder/getExpressFee.json
-
-
-fhInterfacePath:
-  openPlatform: http://115.236.176.107:7790/heren/api/openplatform/invoke
-  getToken: http://115.236.176.107:7790/heren/api/openplatform/auth/token
-  fhAppKey: 85e8ea4327957c99b99651f2f4925cc2451d26e9
-  loadDurgsServiceName: CloudDrugStoreResource.getDrugInfoForCloudStore
-  dictName: CloudDrugStoreResource.getDictFromHis
-
-orgHosCode:
-#湖州中心医院
- hzzxyy: 47117170333050211A1001
-
-notrecord:
-  methodList:
-    - getHealthCheck

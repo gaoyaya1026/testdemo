@@ -1,4 +1,4 @@
-package utils;
+package com.test.demo.utils;
 
 /**
  * @program: testdemo

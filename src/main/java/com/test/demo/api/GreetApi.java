@@ -1,4 +1,4 @@
-package api;
+package com.test.demo.api;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
