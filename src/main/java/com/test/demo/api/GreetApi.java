@@ -1,4 +1,4 @@
-package api;
+package com.test.demo.api;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -22,7 +22,7 @@ public class GreetApi {
 
     @RequestMapping("/greeting")
     public HttpEntity<Greeting> greeting(
-            @RequestParam(value = "name", required = false, defaultValue = "World") String name) {
+            @RequestParam(value = "name", required = false, defaultValue = "World123") String name) {
 
         Greeting greeting = new Greeting(String.format(TEMPLATE, name));
         greeting.add(linkTo(methodOn(GreetApi.class).greeting(name)).withSelfRel());

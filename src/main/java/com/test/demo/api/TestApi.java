@@ -1,4 +1,4 @@
-package api;
+package com.test.demo.api;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestApi {
 
-    @RequestMapping("/")
+    @RequestMapping("/hello")
     String home() {
         return "Hello World!";
     }
