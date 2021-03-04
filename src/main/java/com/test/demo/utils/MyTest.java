@@ -8,4 +8,6 @@ package com.test.demo.utils;
  **/
 public class MyTest {
 
+    private String str;
+
 }

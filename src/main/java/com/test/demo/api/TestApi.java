@@ -15,6 +15,6 @@ public class TestApi {
 
     @RequestMapping("/hello")
     String home() {
-        return "Hello World 123!";
+        return "Hello World!";
     }
 }
